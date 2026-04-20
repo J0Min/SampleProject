@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int main()
@@ -121,14 +123,28 @@ int main()
 			hp -= 30;
 			cout << "=> The Goblin in attacked you! (-30)\n";
 		}
+	}
+	cout << "\n";
+	if (hp <= 0) {
+		cout << "[System] You died...\n";
+	}
+	else {
+		cout << "[System] You defeated the Goblin\n";
 
-		cout << "\n";
-		if (hp <= 0) {
-			cout << "[System] You died...\n";
+		srand(time(NULL));
+		cout << "----------------Looting Items----------------\n";
+		for (int i = 0; i <= 3; i++) {
+			int lootRoll = rand() % 4;
+			string itemName;
+
+			if (lootRoll == 0) itemName = "Gold";
+			else if (lootRoll == 1) itemName = "Healing Potion";
+			else if (lootRoll == 2) itemName = "Weapon";
+			else itemName = "Armor";
+
+			cout << i << ". Get [" << itemName << "]\n";
 		}
-		else {
-			cout << "[System] You defeated the Goblin\n";
-		}
+		cout << "---------------------------------------------\n";
 	}
 	return 0;
 }
