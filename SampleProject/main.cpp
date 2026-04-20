@@ -18,10 +18,15 @@ int main()
 
 	bool isHardcore = true;
 
+	int fireResist = 0;
+	int lightningResist = 0;
+	int coldResist = 0;
+	int posionResist = 0;
+
 	cout << "[ Character Creation ]\n";
 	cout << "Input your name: ";
 	cin >> userName;
-	cout << "Input your Class; ";
+	cout << "Input your Class: ";
 	cin >> charactorClass;
 
 	cout << "\n:::::::: Welcome to the Sanctuary ::::::::\n";
@@ -43,6 +48,11 @@ int main()
 
 	cout << "[Memory Check] int type size: " << sizeof(hp) << "bytes\n";
 	cout << "[Memory Check] bool type size: " << sizeof(isHardcore) << "bytes\n";
+
+	cout << "Fire Resistance: " << fireResist << "\n";
+	cout << "Lightning Resistance: " << lightningResist << "\n";
+	cout << "Cold Resistance: " << coldResist << "\n";
+	cout << "Poision Resistance: " << posionResist << "\n";
 	
 	return 0;
 }
