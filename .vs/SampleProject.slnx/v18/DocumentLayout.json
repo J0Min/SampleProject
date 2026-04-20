@@ -1,7 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\GCC\\source\\repos\\SampleProject\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{73BA673D-99E7-45FA-871D-9044A682A847}|SampleProject\\SampleProject.vcxproj|C:\\Users\\GCC\\source\\repos\\SampleProject\\SampleProject\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{73BA673D-99E7-45FA-871D-9044A682A847}|SampleProject\\SampleProject.vcxproj|solutionrelative:SampleProject\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,6 +27,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.cpp",
+              "DocumentMoniker": "C:\\Users\\GCC\\source\\repos\\SampleProject\\SampleProject\\main.cpp",
+              "RelativeDocumentMoniker": "SampleProject\\main.cpp",
+              "ToolTip": "C:\\Users\\GCC\\source\\repos\\SampleProject\\SampleProject\\main.cpp",
+              "RelativeToolTip": "SampleProject\\main.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2026-04-20T03:19:58.573Z",
+              "EditorCaption": ""
             }
           ]
         }
