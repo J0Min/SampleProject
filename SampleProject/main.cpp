@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-int main() 
+int main()
 {
 	char userName[50];
 	string charactorClass;
@@ -16,10 +16,10 @@ int main()
 	int level = 1;
 	int hp = 100;
 	int mp = 100;
-	
-	float attackDamage = dexterity / 0.2f;
-	float attackSpeed = dexterity / 10.0f;
-	double movingSpeed = dexterity / 30.0f;
+
+	float attackDamage = dexterity * 0.2f;
+	float attackSpeed = dexterity * 10.0f;
+	double movingSpeed = dexterity * 30.0f;
 
 	bool isHardcore = true;
 	char hardcoreInput;
@@ -51,7 +51,7 @@ int main()
 	case 8: charactorClass = "Warlock"; break;
 	default:
 		charactorClass = "Unknown";
-			cout << "[System] Invalid choice. Defaulting to Unknwon.\n";
+		cout << "[System] Invalid choice. Defaulting to Unknwon.\n";
 		break;
 	}
 
@@ -97,8 +97,38 @@ int main()
 	cout << "Lightning Resistance: " << lightningResist << "\n";
 	cout << "Cold Resistance: " << coldResist << "\n";
 	cout << "Poision Resistance: " << posionResist << "\n";
-	
 
+	int goblinHP = 30;
+	int action;
 
+	cout << "\n[System] You encounered a Goblin!\n";
+	while (goblinHP > 0 && hp > 0) {
+		cout << "\n[ Goblin HP: " << goblinHP << " | My HP: " << hp << " ]\n";
+		cout << "1. Attack: ";
+		cin >> action;
+
+		if (action == 1) {
+			goblinHP -= attackDamage;
+			cout << "=> You attacked the Goblin! (-" << attackDamage << ")\n";
+
+			if (goblinHP > 0) {
+				hp -= 30;
+				cout << "=> The Goblin in attacked you! (-30)\n";
+			}
+		}
+		else {
+			cout << "=> Invalid action! Please choose a valid action\n";
+			hp -= 30;
+			cout << "=> The Goblin in attacked you! (-30)\n";
+		}
+
+		cout << "\n";
+		if (hp <= 0) {
+			cout << "[System] You died...\n";
+		}
+		else {
+			cout << "[System] You defeated the Goblin\n";
+		}
+	}
 	return 0;
 }
