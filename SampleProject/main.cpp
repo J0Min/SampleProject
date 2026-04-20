@@ -6,17 +6,21 @@ int main()
 	char userName[50];
 	char charactorClass[50];
 
-	int level = 1;
-	int hp = 100;
-	int mp = 100;
-	float attackSpedd = 5.5f;
-
 	int strength = 50;
 	int dexterity = 50;
 	int vitality = 50;
 	int energy = 50;
 
+	int level = 1;
+	int hp = 100;
+	int mp = 100;
+	
+	float attackDamage = dexterity / 0.2f;
+	float attackSpeed = dexterity / 10.0f;
+	double movingSpeed = dexterity / 30.0f;
+
 	bool isHardcore = true;
+	char hardcoreInput;
 
 	int fireResist = 0;
 	int lightningResist = 0;
@@ -28,6 +32,21 @@ int main()
 	cin >> userName;
 	cout << "Input your Class: ";
 	cin >> charactorClass;
+	cout << "Enable Hardcore Mode? (1) Yes, (2) No: ";
+	cin >> hardcoreInput;
+
+	if (hardcoreInput == '1') {
+		isHardcore = true;
+		cout << "[System] Hardcore mode enabled. Death is permanent\n";
+	}
+	else if (hardcoreInput == '2') {
+		isHardcore = false;
+		cout << "[System] Standard mode enabled.\n";
+	}
+	else {
+		isHardcore = false;
+		cout << "[System] Standard mode enabled.\n";
+	}
 
 	cout << "\n:::::::: Welcome to the Sanctuary ::::::::\n";
 	cout << "Uset Name : [" << userName << "]\n";
@@ -37,7 +56,9 @@ int main()
 	cout << "Level: " << level << "\n";
 	cout << "HP: " << hp << "\n";
 	cout << "MP: " << mp << "\n";
-	cout << "Attack Speed: " << attackSpedd << "\n";
+	cout << "Attack Damage: " << attackDamage << "\n";
+	cout << "Attack Speed: " << attackSpeed << "\n";
+	cout << "Moving Speed: " << movingSpeed << "\n";
 	cout << "Strength: " << strength << "\n";
 	cout << "Dexterity: " << dexterity << "\n";
 	cout << "Vitality: " << vitality << "\n";
