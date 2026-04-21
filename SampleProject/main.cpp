@@ -224,13 +224,21 @@ int main()
 	cout << "&score[3] " << &score[3] << endl;
 	cout << "&score[4] " << &score[4] << endl;
 
+	//Pointer Decay - 배열 이름이 시작주소로 형변환
 	cout << "score: " << score << '\n';
 	cout << "&score[0] " << &score[0] << endl;
 	cout << "score[2] " << score[2] << endl;
 	cout << "*(score[2]) " << *(score + 2) << endl;
 
-
-
+	//형변환의 예외상황 sizeof 사용
+	cout << "score_size  " << sizeof(score) << endl;//int 배열의 사이즈
+	cout << "score_size[0]  " << sizeof(score[0]) << endl;//int 배열의 사이즈
+	
+	//형 변환의 예외상황: &주소 연산자 사용
+	cout << "score: " << score << '\n';
+	cout << "score + 1: " << score + 1 << '\n';//+4 단위 이동
+	cout << "&score: " << score << '\n';
+	cout << "&score + 1: " << &score + 1 << '\n';//+20단위로 배열 전체이동
 
 
 	system("pause");
