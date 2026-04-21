@@ -184,86 +184,89 @@ int main()
 	int coldResist = 0;
 	int posionResist = 0;
 
-	cout << "hp 변수의 값: " << hp << endl;
-	cout << "hp 변수의 주소값" << &hp << endl;
-	
+	//인벤토리( 0 빈칸, 1 Gold, 2 Healing Potion, 3 Weapon, 4 Armor)
+	int gameInventory[5]{};
 
-	int* ptr = &hp;
-	cout << "ptr 변수의 값: " << ptr << endl;
-	cout << "*ptr 변수의 값: " << *ptr << endl;
-	
+	//cout << "hp 변수의 값: " << hp << endl;
+	//cout << "hp 변수의 주소값" << &hp << endl;
+	//
 
-	*ptr = 300;
-	cout << "hp 변수의 새로운 값: " << hp << endl;
-	
+	//int* ptr = &hp;
+	//cout << "ptr 변수의 값: " << ptr << endl;
+	//cout << "*ptr 변수의 값: " << *ptr << endl;
+	//
 
-	//쓰레기값 출력 불가
-	int* ptr2 = nullptr;
-	cout << "*ptr2 변수의 값: " << ptr2 << endl;
+	//*ptr = 300;
+	//cout << "hp 변수의 새로운 값: " << hp << endl;
+	//
 
-	char* ptr_c;
-	int* ptr_i;
-	float* ptr_f;
-	double ptr_d;
+	////쓰레기값 출력 불가
+	//int* ptr2 = nullptr;
+	//cout << "*ptr2 변수의 값: " << ptr2 << endl;
 
-	cout << "char*  " << sizeof(ptr_c)<<endl;
-	cout << "int*  " << sizeof(ptr_i) << endl;
-	cout << "float*  " << sizeof(ptr_f) << endl;
-	cout << "double*  " << sizeof(ptr_d) << endl;
+	//char* ptr_c;
+	//int* ptr_i;
+	//float* ptr_f;
+	//double ptr_d;
 
-	int a[2] = { 1,5 };
-	cout << "A1  " << *a << endl <<a<< endl;
-	cout << "A2  " << *(a + 1) << endl << (a + 1) <<  endl;
-	
-	system("pause");
+	//cout << "char*  " << sizeof(ptr_c)<<endl;
+	//cout << "int*  " << sizeof(ptr_i) << endl;
+	//cout << "float*  " << sizeof(ptr_f) << endl;
+	//cout << "double*  " << sizeof(ptr_d) << endl;
 
-	int score[5] = { 85,92,78,95,88 };
-	cout << "&score[0] " << &score << endl;
-	cout << "&score[1] " << &score[1] << endl;
-	cout << "&score[2] " << &score[2] << endl;
-	cout << "&score[3] " << &score[3] << endl;
-	cout << "&score[4] " << &score[4] << endl;
+	//int a[2] = { 1,5 };
+	//cout << "A1  " << *a << endl <<a<< endl;
+	//cout << "A2  " << *(a + 1) << endl << (a + 1) <<  endl;
+	//
+	//system("pause");
 
-	//Pointer Decay - 배열 이름이 시작주소로 형변환
-	cout << "score: " << score << '\n';
-	cout << "&score[0] " << &score[0] << endl;
-	cout << "score[2] " << score[2] << endl;
-	cout << "*(score[2]) " << *(score + 2) << endl;
+	//int score[5] = { 85,92,78,95,88 };
+	//cout << "&score[0] " << &score << endl;
+	//cout << "&score[1] " << &score[1] << endl;
+	//cout << "&score[2] " << &score[2] << endl;
+	//cout << "&score[3] " << &score[3] << endl;
+	//cout << "&score[4] " << &score[4] << endl;
 
-	//형변환의 예외상황 sizeof 사용
-	cout << "score_size  " << sizeof(score) << endl;//int 배열의 사이즈
-	cout << "score_size[0]  " << sizeof(score[0]) << endl;//int 배열의 사이즈
-	
-	//형 변환의 예외상황: &주소 연산자 사용
-	cout << "score: " << score << '\n';
-	cout << "score + 1: " << score + 1 << '\n';//+4 단위 이동
-	cout << "&score: " << score << '\n';
-	cout << "&score + 1: " << &score + 1 << '\n';//+20단위로 배열 전체이동
-		
-	//배열순환 반복문
-	int* sPtr = score;
-	for (int i = 0; i < 5; i++) {
-		cout << "주소: " << sPtr << '\t' << "  값: " << *sPtr << '\n';
-		sPtr++;
-	}
+	////Pointer Decay - 배열 이름이 시작주소로 형변환
+	//cout << "score: " << score << '\n';
+	//cout << "&score[0] " << &score[0] << endl;
+	//cout << "score[2] " << score[2] << endl;
+	//cout << "*(score[2]) " << *(score + 2) << endl;
 
-	system("pause");
-	int* wildPtr;
-	//*wildPtr = 100;
-	
-	wildPtr = nullptr;
-	if (wildPtr != nullptr) {
-		*wildPtr = 100;
-	}
-	int* wildPtr2 = new int(100);
-	cout << "삭제 전 wPtr2: " << wildPtr2 << '\n';
-	delete wildPtr2;
-	//*wildPtr2 = 100;
-	wildPtr2 = nullptr;
-	cout << "삭제 후 wPtr2: " << wildPtr2 << '\n';
-	system("pause");
-	/////////////////////////////////////////////////////////////////////////////////////////////
-	
+	////형변환의 예외상황 sizeof 사용
+	//cout << "score_size  " << sizeof(score) << endl;//int 배열의 사이즈
+	//cout << "score_size[0]  " << sizeof(score[0]) << endl;//int 배열의 사이즈
+	//
+	////형 변환의 예외상황: &주소 연산자 사용
+	//cout << "score: " << score << '\n';
+	//cout << "score + 1: " << score + 1 << '\n';//+4 단위 이동
+	//cout << "&score: " << score << '\n';
+	//cout << "&score + 1: " << &score + 1 << '\n';//+20단위로 배열 전체이동
+	//	
+	////배열순환 반복문
+	//int* sPtr = score;
+	//for (int i = 0; i < 5; i++) {
+	//	cout << "주소: " << sPtr << '\t' << "  값: " << *sPtr << '\n';
+	//	sPtr++;
+	//}
+
+	//system("pause");
+	//int* wildPtr;
+	////*wildPtr = 100;
+	//
+	//wildPtr = nullptr;
+	//if (wildPtr != nullptr) {
+	//	*wildPtr = 100;
+	//}
+	//int* wildPtr2 = new int(100);
+	//cout << "삭제 전 wPtr2: " << wildPtr2 << '\n';
+	//delete wildPtr2;
+	////*wildPtr2 = 100;
+	//wildPtr2 = nullptr;
+	//cout << "삭제 후 wPtr2: " << wildPtr2 << '\n';
+	//system("pause");
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	//
 	
 	// [1] 캐릭터 이름 입력
 	cout << "[ Character Creation ]\n";
@@ -421,23 +424,37 @@ int main()
 		}
 	}
 
+
+
 	// [6] 전투 종료 후 최종 결과 및 전리품 출력
 	cout << "\n[System] You died...\n";
 	cout << "Total Goblins Defeated: " << killCount << "\n";
 	cout << "\n----------------Acquired Loot (남긴 전리품)----------------\n";
 
+	//인벤토리 랜덤 숫자 저장
+	int* invPtr = gameInventory;
 	srand(time(NULL));
 	for (int i = 1; i <= 3; i++) {
-		int lootRoll = rand() % 4;
-		string itemName;
-
-		if (lootRoll == 0) itemName = "Gold";
-		else if (lootRoll == 1) itemName = "Healing Potion";
-		else if (lootRoll == 2) itemName = "Weapon";
-		else itemName = "Armor";
-
-		cout << i << ". [" << itemName << "]\n";
+		*invPtr = rand() % 4 + 1; // 역참조로 현재 칸에 아이템 코드를 저장하고자 함.
+		invPtr++;
 	}
+	//포인터 순회로 인벤토리 출력(5칸)
+	invPtr = gameInventory; //다시 처음 가르킴
+	int slot = 0;
+
+	while(invPtr < gameInventory + 5){//주소로도 대소비교가 되나보네
+		string itemName;
+		if (*invPtr == 1)itemName = "Gold";
+		else if (*invPtr == 2)itemName = "Healing Potion";
+		else if (*invPtr == 3)itemName = "Weapon";
+		else if (*invPtr == 4)itemName = "Armor";
+		else itemName = "None";
+		cout << ">Slot " << slot << '[' << itemName << "]\n";
+		slot++;
+		invPtr++;
+	}
+
+
 	cout << "-----------------------------------------------------------\n";
 
 	return 0;
