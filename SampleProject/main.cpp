@@ -191,11 +191,35 @@ int main()
 	int* ptr = &hp;
 	cout << "ptr 변수의 값: " << ptr << endl;
 	cout << "*ptr 변수의 값: " << *ptr << endl;
-	system("pause");
+	
 
 	*ptr = 300;
 	cout << "hp 변수의 새로운 값: " << hp << endl;
+	
 
+	//쓰레기값 출력 불가
+	int* ptr2 = nullptr;
+	cout << "*ptr2 변수의 값: " << ptr2 << endl;
+
+	char* ptr_c;
+	int* ptr_i;
+	float* ptr_f;
+	double ptr_d;
+
+	cout << "char*  " << sizeof(ptr_c)<<endl;
+	cout << "int*  " << sizeof(ptr_i) << endl;
+	cout << "float*  " << sizeof(ptr_f) << endl;
+	cout << "double*  " << sizeof(ptr_d) << endl;
+
+	int a[2] = { 1,5 };
+	cout << "A1  " << *a << endl <<a<< endl;
+	cout << "A2  " << *(a + 1) << endl << (a + 1) <<  endl;
+
+
+	system("pause");
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	// [1] 캐릭터 이름 입력
 	cout << "[ Character Creation ]\n";
 	cout << "Input your name: ";
