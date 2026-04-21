@@ -255,6 +255,12 @@ int main()
 	if (wildPtr != nullptr) {
 		*wildPtr = 100;
 	}
+	int* wildPtr2 = new int(100);
+	cout << "삭제 전 wPtr2: " << wildPtr2 << '\n';
+	delete wildPtr2;
+	//*wildPtr2 = 100;
+	wildPtr2 = nullptr;
+	cout << "삭제 후 wPtr2: " << wildPtr2 << '\n';
 	system("pause");
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	
