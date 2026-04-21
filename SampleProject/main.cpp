@@ -184,6 +184,18 @@ int main()
 	int coldResist = 0;
 	int posionResist = 0;
 
+	cout << "hp 변수의 값: " << hp << endl;
+	cout << "hp 변수의 주소값" << &hp << endl;
+	
+
+	int* ptr = &hp;
+	cout << "ptr 변수의 값: " << ptr << endl;
+	cout << "*ptr 변수의 값: " << *ptr << endl;
+	system("pause");
+
+	*ptr = 300;
+	cout << "hp 변수의 새로운 값: " << hp << endl;
+
 	// [1] 캐릭터 이름 입력
 	cout << "[ Character Creation ]\n";
 	cout << "Input your name: ";
