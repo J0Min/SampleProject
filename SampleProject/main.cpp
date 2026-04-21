@@ -239,8 +239,22 @@ int main()
 	cout << "score + 1: " << score + 1 << '\n';//+4 단위 이동
 	cout << "&score: " << score << '\n';
 	cout << "&score + 1: " << &score + 1 << '\n';//+20단위로 배열 전체이동
+		
+	//배열순환 반복문
+	int* sPtr = score;
+	for (int i = 0; i < 5; i++) {
+		cout << "주소: " << sPtr << '\t' << "  값: " << *sPtr << '\n';
+		sPtr++;
+	}
 
-
+	system("pause");
+	int* wildPtr;
+	//*wildPtr = 100;
+	
+	wildPtr = nullptr;
+	if (wildPtr != nullptr) {
+		*wildPtr = 100;
+	}
 	system("pause");
 	/////////////////////////////////////////////////////////////////////////////////////////////
 	
