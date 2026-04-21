@@ -214,6 +214,23 @@ int main()
 	int a[2] = { 1,5 };
 	cout << "A1  " << *a << endl <<a<< endl;
 	cout << "A2  " << *(a + 1) << endl << (a + 1) <<  endl;
+	
+	system("pause");
+
+	int score[5] = { 85,92,78,95,88 };
+	cout << "&score[0] " << &score << endl;
+	cout << "&score[1] " << &score[1] << endl;
+	cout << "&score[2] " << &score[2] << endl;
+	cout << "&score[3] " << &score[3] << endl;
+	cout << "&score[4] " << &score[4] << endl;
+
+	cout << "score: " << score << '\n';
+	cout << "&score[0] " << &score[0] << endl;
+	cout << "score[2] " << score[2] << endl;
+	cout << "*(score[2]) " << *(score + 2) << endl;
+
+
+
 
 
 	system("pause");
