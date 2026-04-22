@@ -156,6 +156,34 @@
 
 using namespace std;
 
+//Call by value
+void PreviewCritical(float attackDamage) {
+	attackDamage *= 2;
+	cout << "크리티컬 예상 데미지: " << attackDamage << '\n';
+}
+//Call by Reference Ex) 참조자 전달 -> 실제 크리티컬 데미지 적용
+void ApplyCriticalDamage(int& goblinHp, float attackDamage) {
+	int criticalDamage =  attackDamage * 2;
+	goblinHp -= criticalDamage;
+}
+
+//Call by Address
+/*void LevelUp(int* level) {
+	(*level)++;
+}*/
+
+//Call by Reference
+void LevelUpRef(int& level) {
+	level++;
+}
+
+//const 참조자 - 복사 비용 절약 + 원본 수정 차단
+void PrintLevel(const int& level) {
+	cout << "PrintLevel : " << level << endl;
+	//level++; //컴파일 오류 - const라 수정 불가
+}
+
+
 int main()
 {
 	char userName[50];
@@ -184,41 +212,117 @@ int main()
 	int coldResist = 0;
 	int posionResist = 0;
 
-	cout << "hp 변수의 값: " << hp << endl;
-	cout << "hp 변수의 주소값" << &hp << endl;
+	//인벤토리( 0 빈칸, 1 Gold, 2 Healing Potion, 3 Weapon, 4 Armor)
+	int gameInventory[5]{};
+
+	////Call by Value - 원본의 불변 확인
+	//cout << "attackDamge: " << attackDamage << '\n';
+	//PreviewCritical(attackDamage);
+	//cout << "attackDamge: " << attackDamage << '\n';
+
+	////Call by Address - 원본 직접 수정 가능
+	//cout << "level: " << level << '\n';
+	//LevelUp(&level);
+	//cout << "level: " << level << '\n';
+
+	////Call by Reference - 원본과 같은 메모리
+	//int& levelRef = level;
+	//levelRef++;
+	//cout << "levelRef++ 후 원본: " << level << '\n';
+	//cout << "levelRef++과 level의 동일한 값인가: " << levelRef << '\n';
+	//
+	//cout << "===========================================" << endl;
+
+	////기호 * , & 없이 호출
+	//cout << "leveUpRef() 호출 전 원본 level: " << level << '\n';
+	//LevelUpRef(level);
+	//cout << "leveUpRef() 호출 후 원본 level: " << level << '\n';
+
+	//PrintLevel(level);
 	
 
-	int* ptr = &hp;
-	cout << "ptr 변수의 값: " << ptr << endl;
-	cout << "*ptr 변수의 값: " << *ptr << endl;
-	
+	//system("pause");
 
-	*ptr = 300;
-	cout << "hp 변수의 새로운 값: " << hp << endl;
-	
+	//cout << "hp 변수의 값: " << hp << endl;
+	//cout << "hp 변수의 주소값" << &hp << endl;
+	//
 
-	//쓰레기값 출력 불가
-	int* ptr2 = nullptr;
-	cout << "*ptr2 변수의 값: " << ptr2 << endl;
+	//int* ptr = &hp;
+	//cout << "ptr 변수의 값: " << ptr << endl;
+	//cout << "*ptr 변수의 값: " << *ptr << endl;
+	//
 
-	char* ptr_c;
-	int* ptr_i;
-	float* ptr_f;
-	double ptr_d;
+	//*ptr = 300;
+	//cout << "hp 변수의 새로운 값: " << hp << endl;
+	//
 
-	cout << "char*  " << sizeof(ptr_c)<<endl;
-	cout << "int*  " << sizeof(ptr_i) << endl;
-	cout << "float*  " << sizeof(ptr_f) << endl;
-	cout << "double*  " << sizeof(ptr_d) << endl;
+	////쓰레기값 출력 불가
+	//int* ptr2 = nullptr;
+	//cout << "*ptr2 변수의 값: " << ptr2 << endl;
 
-	int a[2] = { 1,5 };
-	cout << "A1  " << *a << endl <<a<< endl;
-	cout << "A2  " << *(a + 1) << endl << (a + 1) <<  endl;
+	//char* ptr_c;
+	//int* ptr_i;
+	//float* ptr_f;
+	//double ptr_d;
 
+	//cout << "char*  " << sizeof(ptr_c)<<endl;
+	//cout << "int*  " << sizeof(ptr_i) << endl;
+	//cout << "float*  " << sizeof(ptr_f) << endl;
+	//cout << "double*  " << sizeof(ptr_d) << endl;
 
-	system("pause");
-	/////////////////////////////////////////////////////////////////////////////////////////////
-	
+	//int a[2] = { 1,5 };
+	//cout << "A1  " << *a << endl <<a<< endl;
+	//cout << "A2  " << *(a + 1) << endl << (a + 1) <<  endl;
+	//
+	//system("pause");
+
+	//int score[5] = { 85,92,78,95,88 };
+	//cout << "&score[0] " << &score << endl;
+	//cout << "&score[1] " << &score[1] << endl;
+	//cout << "&score[2] " << &score[2] << endl;
+	//cout << "&score[3] " << &score[3] << endl;
+	//cout << "&score[4] " << &score[4] << endl;
+
+	////Pointer Decay - 배열 이름이 시작주소로 형변환
+	//cout << "score: " << score << '\n';
+	//cout << "&score[0] " << &score[0] << endl;
+	//cout << "score[2] " << score[2] << endl;
+	//cout << "*(score[2]) " << *(score + 2) << endl;
+
+	////형변환의 예외상황 sizeof 사용
+	//cout << "score_size  " << sizeof(score) << endl;//int 배열의 사이즈
+	//cout << "score_size[0]  " << sizeof(score[0]) << endl;//int 배열의 사이즈
+	//
+	////형 변환의 예외상황: &주소 연산자 사용
+	//cout << "score: " << score << '\n';
+	//cout << "score + 1: " << score + 1 << '\n';//+4 단위 이동
+	//cout << "&score: " << score << '\n';
+	//cout << "&score + 1: " << &score + 1 << '\n';//+20단위로 배열 전체이동
+	//	
+	////배열순환 반복문
+	//int* sPtr = score;
+	//for (int i = 0; i < 5; i++) {
+	//	cout << "주소: " << sPtr << '\t' << "  값: " << *sPtr << '\n';
+	//	sPtr++;
+	//}
+
+	//system("pause");
+	//int* wildPtr;
+	////*wildPtr = 100;
+	//
+	//wildPtr = nullptr;
+	//if (wildPtr != nullptr) {
+	//	*wildPtr = 100;
+	//}
+	//int* wildPtr2 = new int(100);
+	//cout << "삭제 전 wPtr2: " << wildPtr2 << '\n';
+	//delete wildPtr2;
+	////*wildPtr2 = 100;
+	//wildPtr2 = nullptr;
+	//cout << "삭제 후 wPtr2: " << wildPtr2 << '\n';
+	//system("pause");
+	///////////////////////////////////////////////////////////////////////////////////////////////
+	//
 	
 	// [1] 캐릭터 이름 입력
 	cout << "[ Character Creation ]\n";
@@ -351,7 +455,7 @@ int main()
 		}
 
 		// --- 현재 턴 행동 입력 ---
-		cout << "\n1. Attack: ";
+		cout << "\n1. Attack 2. CriticalDamage   ";
 		cin >> action;
 
 		// 전투 로직 계산
@@ -364,35 +468,71 @@ int main()
 				lastActionStatus = 1;
 			}
 			else {
+				LevelUpRef(level);
+				PrintLevel(level);
 				// 고블린을 처치하면 카운트를 올리고 새로운 고블린 등장
 				killCount++;
 				lastActionStatus = 3;
 				goblinHP = maxGoblinHP; // 새 고블린 체력 갱신
 			}
 		}
-		else {
+		else if (action == 2) {
+			PreviewCritical(attackDamage);
+			ApplyCriticalDamage(goblinHP,attackDamage);
+			cout << "Critical Hit! " << '\n';
+
+			if (goblinHP > 0) {
+				// 고블린이 살아있으면 반격
+				hp -= 30;
+				lastActionStatus = 1;
+			}
+			else {
+				LevelUpRef(level);
+				PrintLevel(level);
+				// 고블린을 처치하면 카운트를 올리고 새로운 고블린 등장
+				killCount++;
+				lastActionStatus = 3;
+				goblinHP = maxGoblinHP; // 새 고블린 체력 갱신
+			}
+
+		}
+		else{
 			lastActionStatus = 2;
 			hp -= 30; // 턴을 낭비했으므로 일방적으로 맞음
 		}
 	}
+
+
 
 	// [6] 전투 종료 후 최종 결과 및 전리품 출력
 	cout << "\n[System] You died...\n";
 	cout << "Total Goblins Defeated: " << killCount << "\n";
 	cout << "\n----------------Acquired Loot (남긴 전리품)----------------\n";
 
+	//인벤토리 랜덤 숫자 저장
+	int* invPtr = gameInventory;
 	srand(time(NULL));
 	for (int i = 1; i <= 3; i++) {
-		int lootRoll = rand() % 4;
-		string itemName;
-
-		if (lootRoll == 0) itemName = "Gold";
-		else if (lootRoll == 1) itemName = "Healing Potion";
-		else if (lootRoll == 2) itemName = "Weapon";
-		else itemName = "Armor";
-
-		cout << i << ". [" << itemName << "]\n";
+		*invPtr = rand() % 4 + 1; // 역참조로 현재 칸에 아이템 코드를 저장하고자 함.
+		invPtr++;
 	}
+	//포인터 순회로 인벤토리 출력(5칸)
+	invPtr = gameInventory; //다시 처음 가르킴
+	int slot = 0;
+
+	while(invPtr < gameInventory + 5){//주소로도 대소비교가 되나보네
+		string itemName;
+		if (*invPtr == 1)itemName = "Gold";
+		else if (*invPtr == 2)itemName = "Healing Potion";
+		else if (*invPtr == 3)itemName = "Weapon";
+		else if (*invPtr == 4)itemName = "Armor";
+		else itemName = "None";
+		cout << ">Slot " << slot << '[' << itemName << "]\n";
+		slot++;
+		invPtr++;
+	}
+
+
 	cout << "-----------------------------------------------------------\n";
 
 	return 0;
