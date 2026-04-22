@@ -156,6 +156,11 @@
 
 using namespace std;
 
+void PreviewCritical(float attackDamage) {
+	attackDamage *= 2;
+	cout << "크리티컬 예상 데미지: " << attackDamage << '\n';
+}
+
 int main()
 {
 	char userName[50];
@@ -186,6 +191,13 @@ int main()
 
 	//인벤토리( 0 빈칸, 1 Gold, 2 Healing Potion, 3 Weapon, 4 Armor)
 	int gameInventory[5]{};
+
+	//Call by Value - 원본의 불변 확인
+	cout << "attackDamge: " << attackDamage << '\n';
+	PreviewCritical(attackDamage);
+	cout << "attackDamge: " << attackDamage << '\n';
+
+	system("pause");
 
 	//cout << "hp 변수의 값: " << hp << endl;
 	//cout << "hp 변수의 주소값" << &hp << endl;

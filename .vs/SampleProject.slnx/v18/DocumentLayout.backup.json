@@ -14,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -33,18 +33,14 @@
               "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "main.cpp",
               "DocumentMoniker": "C:\\Users\\GCC\\source\\repos\\SampleProject\\SampleProject\\main.cpp",
               "RelativeDocumentMoniker": "SampleProject\\main.cpp",
-              "ToolTip": "C:\\Users\\GCC\\source\\repos\\SampleProject\\SampleProject\\main.cpp*",
-              "RelativeToolTip": "SampleProject\\main.cpp*",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAAAL0AAAAUAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\GCC\\source\\repos\\SampleProject\\SampleProject\\main.cpp",
+              "RelativeToolTip": "SampleProject\\main.cpp",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAAAMUAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2026-04-20T03:19:58.573Z",
               "EditorCaption": ""
