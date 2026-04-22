@@ -165,10 +165,17 @@ void PreviewCritical(float attackDamage) {
 void LevelUp(int* level) {
 	(*level)++;
 }
-
+//Call by Reference
 void LevelUpRef(int& level) {
 	level++;
 }
+
+//const 참조자 - 복사 비용 절약 + 원본 수정 차단
+void PrintLevel(const int& level) {
+	cout << "PrintLevel : " << level << endl;
+	//level++; //컴파일 오류 - const라 수정 불가
+}
+
 
 int main()
 {
@@ -223,6 +230,9 @@ int main()
 	cout << "leveUpRef() 호출 전 원본 level: " << level << '\n';
 	LevelUpRef(level);
 	cout << "leveUpRef() 호출 후 원본 level: " << level << '\n';
+
+	PrintLevel(level);
+	
 
 	system("pause");
 
