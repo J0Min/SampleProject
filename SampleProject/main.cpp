@@ -161,10 +161,17 @@ void PreviewCritical(float attackDamage) {
 	attackDamage *= 2;
 	cout << "크리티컬 예상 데미지: " << attackDamage << '\n';
 }
-//Call by Address
-void LevelUp(int* level) {
-	(*level)++;
+//Call by Reference Ex) 참조자 전달 -> 실제 크리티컬 데미지 적용
+void ApplyCriticalDamage(int& goblinHp, float attackDamage) {
+	int criticalDamage =  attackDamage * 2;
+	goblinHp -= criticalDamage;
 }
+
+//Call by Address
+/*void LevelUp(int* level) {
+	(*level)++;
+}*/
+
 //Call by Reference
 void LevelUpRef(int& level) {
 	level++;
@@ -208,33 +215,33 @@ int main()
 	//인벤토리( 0 빈칸, 1 Gold, 2 Healing Potion, 3 Weapon, 4 Armor)
 	int gameInventory[5]{};
 
-	//Call by Value - 원본의 불변 확인
-	cout << "attackDamge: " << attackDamage << '\n';
-	PreviewCritical(attackDamage);
-	cout << "attackDamge: " << attackDamage << '\n';
+	////Call by Value - 원본의 불변 확인
+	//cout << "attackDamge: " << attackDamage << '\n';
+	//PreviewCritical(attackDamage);
+	//cout << "attackDamge: " << attackDamage << '\n';
 
-	//Call by Address - 원본 직접 수정 가능
-	cout << "level: " << level << '\n';
-	LevelUp(&level);
-	cout << "level: " << level << '\n';
+	////Call by Address - 원본 직접 수정 가능
+	//cout << "level: " << level << '\n';
+	//LevelUp(&level);
+	//cout << "level: " << level << '\n';
 
-	//Call by Reference - 원본과 같은 메모리
-	int& levelRef = level;
-	levelRef++;
-	cout << "levelRef++ 후 원본: " << level << '\n';
-	cout << "levelRef++과 level의 동일한 값인가: " << levelRef << '\n';
+	////Call by Reference - 원본과 같은 메모리
+	//int& levelRef = level;
+	//levelRef++;
+	//cout << "levelRef++ 후 원본: " << level << '\n';
+	//cout << "levelRef++과 level의 동일한 값인가: " << levelRef << '\n';
+	//
+	//cout << "===========================================" << endl;
+
+	////기호 * , & 없이 호출
+	//cout << "leveUpRef() 호출 전 원본 level: " << level << '\n';
+	//LevelUpRef(level);
+	//cout << "leveUpRef() 호출 후 원본 level: " << level << '\n';
+
+	//PrintLevel(level);
 	
-	cout << "===========================================" << endl;
 
-	//기호 * , & 없이 호출
-	cout << "leveUpRef() 호출 전 원본 level: " << level << '\n';
-	LevelUpRef(level);
-	cout << "leveUpRef() 호출 후 원본 level: " << level << '\n';
-
-	PrintLevel(level);
-	
-
-	system("pause");
+	//system("pause");
 
 	//cout << "hp 변수의 값: " << hp << endl;
 	//cout << "hp 변수의 주소값" << &hp << endl;
@@ -448,7 +455,7 @@ int main()
 		}
 
 		// --- 현재 턴 행동 입력 ---
-		cout << "\n1. Attack: ";
+		cout << "\n1. Attack 2. CriticalDamage   ";
 		cin >> action;
 
 		// 전투 로직 계산
@@ -461,13 +468,35 @@ int main()
 				lastActionStatus = 1;
 			}
 			else {
+				LevelUpRef(level);
+				PrintLevel(level);
 				// 고블린을 처치하면 카운트를 올리고 새로운 고블린 등장
 				killCount++;
 				lastActionStatus = 3;
 				goblinHP = maxGoblinHP; // 새 고블린 체력 갱신
 			}
 		}
-		else {
+		else if (action == 2) {
+			PreviewCritical(attackDamage);
+			ApplyCriticalDamage(goblinHP,attackDamage);
+			cout << "Critical Hit! " << '\n';
+
+			if (goblinHP > 0) {
+				// 고블린이 살아있으면 반격
+				hp -= 30;
+				lastActionStatus = 1;
+			}
+			else {
+				LevelUpRef(level);
+				PrintLevel(level);
+				// 고블린을 처치하면 카운트를 올리고 새로운 고블린 등장
+				killCount++;
+				lastActionStatus = 3;
+				goblinHP = maxGoblinHP; // 새 고블린 체력 갱신
+			}
+
+		}
+		else{
 			lastActionStatus = 2;
 			hp -= 30; // 턴을 낭비했으므로 일방적으로 맞음
 		}
