@@ -156,9 +156,14 @@
 
 using namespace std;
 
+//Call by value
 void PreviewCritical(float attackDamage) {
 	attackDamage *= 2;
 	cout << "크리티컬 예상 데미지: " << attackDamage << '\n';
+}
+//Call by Address
+void LevelUp(int* level) {
+	(*level)++;
 }
 
 int main()
@@ -196,6 +201,11 @@ int main()
 	cout << "attackDamge: " << attackDamage << '\n';
 	PreviewCritical(attackDamage);
 	cout << "attackDamge: " << attackDamage << '\n';
+
+	//Call by Address - 원본 직접 수정 가능
+	cout << "level: " << level << '\n';
+	LevelUp(&level);
+	cout << "level: " << level << '\n';
 
 	system("pause");
 
