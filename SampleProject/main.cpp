@@ -207,6 +207,12 @@ int main()
 	LevelUp(&level);
 	cout << "level: " << level << '\n';
 
+	//Call by Reference - 원본과 같은 메모리
+	int& levelRef = level;
+	levelRef++;
+	cout << "levelRef++ 후 원본: " << level << '\n';
+	cout << "levelRef++과 level의 동일한 값인가: " << levelRef << '\n';
+	
 	system("pause");
 
 	//cout << "hp 변수의 값: " << hp << endl;
