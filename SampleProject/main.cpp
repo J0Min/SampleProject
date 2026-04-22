@@ -166,6 +166,10 @@ void LevelUp(int* level) {
 	(*level)++;
 }
 
+void LevelUpRef(int& level) {
+	level++;
+}
+
 int main()
 {
 	char userName[50];
@@ -213,6 +217,13 @@ int main()
 	cout << "levelRef++ 후 원본: " << level << '\n';
 	cout << "levelRef++과 level의 동일한 값인가: " << levelRef << '\n';
 	
+	cout << "===========================================" << endl;
+
+	//기호 * , & 없이 호출
+	cout << "leveUpRef() 호출 전 원본 level: " << level << '\n';
+	LevelUpRef(level);
+	cout << "leveUpRef() 호출 후 원본 level: " << level << '\n';
+
 	system("pause");
 
 	//cout << "hp 변수의 값: " << hp << endl;
