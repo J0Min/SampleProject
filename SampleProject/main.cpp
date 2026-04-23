@@ -183,6 +183,32 @@ void PrintLevel(const int& level) {
 	//level++; //컴파일 오류 - const라 수정 불가
 }
 
+class Monster
+{
+	private:
+		int hp, maxHp;
+		int attackDamage;
+	public:
+		Monster(int initHp, int atk)
+			: hp(initHp), maxHp(initHp), attackDamage(atk)
+		{
+			cout << "[몬스터 등장!] HP: " << hp << " / ATK: "<< attackDamage<< '\n';
+		}
+		~Monster()
+		{
+			cout<<"[몬스터 소멸!]\n";
+		}
+		int GetHp() const{ return hp; }
+		int GetMaxHp() const{ return maxHp; }
+		int isAlive() const{ return hp > 0; }
+		void TakeDamage(int damage)
+		{
+			hp -= damage;
+			if(hp <= 0) hp = 0; //음수 방지
+		}
+		int Attack() const{ return attackDamage; }
+};
+
 
 int main()
 {
@@ -389,8 +415,11 @@ int main()
 	int lastActionStatus = 0; // 0: 첫 조우, 1: 공격 주고받음, 2: 잘못된 행동, 3: 고블린 처치
 	int killCount = 0; // 처치한 고블린 수 카운트
 
+	//class 
+	Monster goblin(30, 10);
+	
 	// [5] 내가 죽을 때까지 무한 반복되는 전투 루프
-	while (true) {
+	while (goblin.isAlive() && hp > 0) {
 		system("cls || clear"); // 화면 초기화 후 스탯창 고정
 
 		// --- 내 스탯 상단 네모 표시 ---
@@ -450,9 +479,9 @@ int main()
 		cout << "=========================================================\n";
 
 		// [사망 체크] 내 체력이 0 이하면 루프(전투) 종료
-		if (hp <= 0) {
-			break;
-		}
+		// if (hp <= 0) {
+		// 	break;
+		// }
 
 		// --- 현재 턴 행동 입력 ---
 		cout << "\n1. Attack 2. CriticalDamage   ";
@@ -460,12 +489,13 @@ int main()
 
 		// 전투 로직 계산
 		if (action == 1) {
-			goblinHP -= attackDamage;
+			goblin.TakeDamage(attackDamage);
 
-			if (goblinHP > 0) {
+			if (goblin.GetHp() > 0) {
 				// 고블린이 살아있으면 반격
 				hp -= 30;
 				lastActionStatus = 1;
+				
 			}
 			else {
 				LevelUpRef(level);
@@ -481,7 +511,7 @@ int main()
 			ApplyCriticalDamage(goblinHP,attackDamage);
 			cout << "Critical Hit! " << '\n';
 
-			if (goblinHP > 0) {
+			if (goblin.GetHp() > 0) {
 				// 고블린이 살아있으면 반격
 				hp -= 30;
 				lastActionStatus = 1;
